@@ -22,8 +22,12 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse) => 
     default:
       break
   }
-});
+})
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`)
+})
+
+server.on('error', (err) => {
+  throw err;
 });
