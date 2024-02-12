@@ -1,6 +1,6 @@
 import http,  { IncomingMessage, ServerResponse } from 'node:http'
 import 'dotenv/config'
-import { handleGetRequests, handlePostRequests, handlePutRequests } from './handlers/handleRequests'
+import { handleGetRequests, handlePostRequests, handlePutRequests, handleDeleteRequests } from './handlers/handleRequests'
 
 const port = process.env.PORT || 3000;
 
@@ -15,6 +15,9 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse) => 
     break 
     case 'PUT': 
     handlePutRequests(req, res)
+    break 
+    case 'DELETE': 
+    handleDeleteRequests(req, res)
     break 
     default:
       break

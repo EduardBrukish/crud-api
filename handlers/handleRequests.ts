@@ -94,3 +94,26 @@ export const handlePutRequests = (req: IncomingMessage, res: ServerResponse): vo
     setBadRequestAnswer(res, 400, 'Invalid url')
   }
 }
+
+export const handleDeleteRequests = (req: IncomingMessage, res: ServerResponse): void => {
+  if (req.url && req.url.startsWith('/api/users/')) {
+    const userId = req.url.split('/')[3]
+    const isValidUserUUID = isValidUUID(userId)
+
+    if (isValidUserUUID) {
+      const user = users.find(user => user.id === userId)
+      
+      if (user) {
+        users = users.filter((u) => u.id !== user.id)
+        res.writeHead(200, { 'Content-Type': 'text/plain' })
+        res.end('User was deleted successfully')
+      } else {
+        setBadRequestAnswer(res, 404, 'User not found')
+      }
+    } else {
+      setBadRequestAnswer(res, 400, 'Invalid user id')
+    }
+  } else {
+    setBadRequestAnswer(res, 400, 'Invalid url')
+  }
+}
