@@ -1,6 +1,6 @@
 Application CRUD API on noodejs
 
-#### 1. Clone repo
+#### Clone repo
 
 ```
 git clone git@github.com:EduardBrukish/crud-api.git
@@ -10,6 +10,12 @@ git clone git@github.com:EduardBrukish/crud-api.git
 
 ```
 cd crud-api
+```
+
+#### Go to the development branch
+
+```
+git checkout develop
 ```
 
 #### Install all needed dependencies
